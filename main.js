@@ -1,6 +1,6 @@
-var width = 4
-var height = 4
-var score = 0
+var width = 4;
+var height = 4;
+var score = 0;
 
 var colours = {
     65536:"",
@@ -20,7 +20,23 @@ var colours = {
     4:"",
     2:"",
     0:""
-}
+};
+
+/*
+TODO: Add code to check if array is changed when moving left, right, up, down. If not, do not add new number
+ */
+Array.prototype.compare = function(testArr) {
+    if (this.length != testArr.length) return false;
+    for (var i = 0; i < testArr.length; i++) {
+        if (this[i].compare) { //To test values in nested arrays
+            if (!this[i].compare(testArr[i])) return false;
+        }
+        else if (this[i] !== testArr[i]) return false;
+    }
+    return true;
+};
+
+
 
 
 
